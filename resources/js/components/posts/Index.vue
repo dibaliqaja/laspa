@@ -48,6 +48,18 @@
             this.axios.get(uri).then(response => {
                 this.posts = response.data.data;
             });
+        },
+        methods: {
+            PostDelete(id)
+            {
+                let uri = `http://localhost:8000/api/posts/${id}`;
+                this.axios.delete(uri)
+                    .then(response => {
+                        this.posts.splice(this.posts.indexOf(id), 1);
+                    }).catch(error => {
+                        alert('System error!');
+                    });
+            }
         }
     }
 </script>

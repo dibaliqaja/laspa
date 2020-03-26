@@ -2130,6 +2130,18 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get(uri).then(function (response) {
       _this.posts = response.data.data;
     });
+  },
+  methods: {
+    PostDelete: function PostDelete(id) {
+      var _this2 = this;
+
+      var uri = "http://localhost:8000/api/posts/".concat(id);
+      this.axios["delete"](uri).then(function (response) {
+        _this2.posts.splice(_this2.posts.indexOf(id), 1);
+      })["catch"](function (error) {
+        alert('System error!');
+      });
+    }
   }
 });
 
